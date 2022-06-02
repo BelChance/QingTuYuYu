@@ -1,7 +1,10 @@
 from django.shortcuts import render
-
+from .models import VideoIntro
 # Create your views here.
 
 
 def video(request):
-    return render(request, 'video.html')
+    videos = VideoIntro.objects.all()
+    return render(request, 'video.html', {
+        'videos': videos
+    })
