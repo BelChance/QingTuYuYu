@@ -1,0 +1,34 @@
+{% extends "biaobase.html" %}
+{% load static %}
+
+{% block title %}
+视频详情
+{% endblock %}
+
+{% block content %}
+<link href="{% static 'assets/css/products.css' %}" rel="stylesheet">
+<!-- 主体内容 -->
+<div class="container-fluid">
+    <div class="row">
+        <img class="img-responsive model-img" src="{% static 'assets/images/products.jpg' %}">
+    </div>
+</div>
+<div class="container">
+    <div class="model-details-product-title">
+        视频标题
+        {{video.title}}
+    </div>
+    <div class="model-details">
+
+
+        <h3>产品介绍</h3>
+        <div>
+            <video src="{{ videoShow.url }}" width="800" height="480" controls>
+                浏览器不支持video元素
+            </video>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
