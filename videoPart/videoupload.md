@@ -12,6 +12,8 @@ python manage.py migrate
 
 ## 创建超级管理员 
 python manage.py createsuperuser
+账号：lizhenbiao
+密码：li893053919
 
 ## 将模型注册到后台系统--编辑同model文件下的admin.py文件
 以列表的形式辅助存储

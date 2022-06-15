@@ -28,6 +28,13 @@
         <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/bootsnav.css' %}">
+        <style>
+            .navbar {
+                width: 100%;
+            }
+        </style>
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 
         <!-- xsslider slider css -->
 
@@ -111,7 +118,7 @@
                             <i class="fa fa-bars"></i>
                         </button>
                         <a class="navbar-brand" href="#brand">
-                            <img src="assets/images/logo.png" class="logo" alt="">
+                            <img src="#" class="logo" alt="">
                             <!--<img src="assets/images/footer-logo.png" class="logo logo-scrolled" alt="">-->
                         </a>
 
@@ -119,13 +126,24 @@
                     <!-- End Header Navigation -->
 
                     <!-- navbar menu -->
-                    <div class="collapse navbar-collapse" id="navbar-menu">
+                    <div class="collapse navbar-collapse" id="navbar-menu" style="overflow: hidden">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{% url 'home' %}">首页</a></li>
                             <li><a href="{% url 'aboutPart:about' %}">关于我们</a></li>
                             <li><a href="{% url 'newsPart:news' %}">团队动态</a></li>
                             <li><a href="{% url 'commuityPart:commuity' %}">社区</a></li>
-                            <li><a href="{% url 'videoPart:video' %}">视频课程</a></li>
+                            <li><a href="{% url 'videoPart:video' 'video_skill' %}">视频课程</a></li>
+                            <li class="dropdown nav-top" id='video'>
+                                <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                                    视频课程</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'videoPart:video' 'video_skill' %}">
+                                            技术视频</a></li>
+                                    <li><a href="{% url 'videoPart:video' 'video_attack' %}">
+                                            战术视频</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'videoPart:video' 'video_attack' %}">商城</a></li>
                             <li><a href="{% url 'contactPart:contact' %}">联系我们</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->

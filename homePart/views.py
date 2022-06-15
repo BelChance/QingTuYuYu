@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'homePart.html')
+    return render(request, 'homePart.html', {'active_menu': 'home', })
