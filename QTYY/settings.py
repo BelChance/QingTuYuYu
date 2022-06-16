@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'newsPart',
     'contactPart',
     'videoPart',
-    'commuityPart',
+    'communityPart',
     'aboutPart',
+    'DjangoUeditor',   #添加富文本应用
+    'haystack',        #添加搜索应用
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 新闻搜索配置django-haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'newsPart.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE  =  10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

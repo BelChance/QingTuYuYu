@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+社区详情
+{% endblock %}
+
+{% block content %}
+<link href="{% static '/assets/css/community.css' %}" rel="stylesheet">
+<!-- 主体内容 -->
+<div class="container">
+    <div class="model-details-community-title">
+        {{community.title}}
+    </div>
+    <div class="model-details">
+        {% for img in community.communityImgs.all %}
+        <div class="row-4">
+            <img class="img-responsive" src="{{img.photo.url}}">
+        </div>
+        {% endfor %}
+        <h3>社区介绍</h3>
+        <p>
+            {{community.description|linebreaks}}
+        </p>
+        <h3>参考价格</h3>
+        <p>
+            {{community.price}}元
+        </p>
+    </div>
+</div>
+{% endblock %}

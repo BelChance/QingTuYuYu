@@ -23,11 +23,13 @@ from homePart.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('commuityPart/', include('commuityPart.urls')),
+    path('communityPart/', include('communityPart.urls')),
     path('contactPart/', include('contactPart.urls')),
     path('newsPart/', include('newsPart.urls')),
     path('videoPart/', include('videoPart.urls')),
     path('aboutPart/', include('aboutPart.urls')),
+    path('ueditor/',include('DjangoUeditor.urls')),
+    path('search/',include('haystack.urls')),
 ]
 
 
