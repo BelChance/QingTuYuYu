@@ -130,8 +130,25 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{% url 'home' %}">首页</a></li>
                             <li><a href="{% url 'aboutPart:about' %}">关于我们</a></li>
-                            <li><a href="{% url 'newsPart:news' %}">团队动态</a></li>
-                            <li><a href="{% url 'commuityPart:commuity' %}">社区</a></li>
+                            <li class="dropdown nav-top" id='news'>
+                                <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                                    团队动态</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'newsPart:news' 'com_new' %}">管理团队</a></li>
+                                    <li><a href="{% url 'newsPart:news' 'spe_new' %}">师资团队</a></li>
+                                    <li><a href="{% url 'newsPart:news' 'man_new' %}">课程研发团队</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown nav-top" id='community'>
+                                <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                                    社区</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'communityPart:community' 'knowledge' %}">足球新闻&小知识</a></li>
+                                    <li><a href="{% url 'communityPart:community' 'English' %}">足球英语</a></li>
+                                    <li><a href="{% url 'communityPart:community' 'policy' %}">体育相关政策</a></li>
+                                    <li><a href="{% url 'communityPart:community' 'health' %}">健康知识</a></li>
+                                </ul>
+                            </li>
                             <li><a href="{% url 'videoPart:video' 'video_skill' %}">视频课程</a></li>
                             <li class="dropdown nav-top" id='video'>
                                 <a href="#" class="dropdown-toggle on" data-toggle="dropdown">

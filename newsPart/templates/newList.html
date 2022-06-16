@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title %}
 {{newName}}
@@ -9,7 +9,8 @@
 <link href="{% static 'assets/css/news.css' %}" rel="stylesheet">
 <!-- 广告横幅 -->
 <div class="container-fluid">
-    <div class="row" style='text-align: center; width: 1500px; border: green solid 1px;max-width: 100%;margin-top:125px'>
+    <div class="row"
+        style='text-align: center; width: 1500px; border: green solid 1px;max-width: 100%;margin-top:125px'>
         <img class="img-responsive model-img" src="{% static 'assets/images/new.png' %}" style="margin: 0 auto;">
     </div>
 </div>
@@ -18,7 +19,8 @@
     <div class="row row-3">
         <!-- 侧边导航栏 -->
         <div class="col-md-3">
-            <div class="model-title" style="text-align: center;background-color:#005197;color:#FFF;font-size:28px;margin-top:20px;padding:10px">
+            <div class="model-title"
+                style="text-align: center;background-color:#005197;color:#FFF;font-size:28px;margin-top:20px;padding:10px">
                 团队动态
             </div>
             <div class="model-list">
@@ -39,9 +41,9 @@
         <div class="col-md-9">
             <div class="model-details-title">
                 {{newName}}
-                <hr/> 
+                <hr />
                 <div class="col-md-7 hidden-xs model-details-title-search">
-                    <form method="get"id="searchform" action="{% url 'haystack_search' %}">
+                    <form method="get" id="searchform" action="{% url 'haystack_search' %}">
                         {% csrf_token %}
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="请输入关键词" required />

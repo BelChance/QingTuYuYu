@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title %}
 {{communityName}}
@@ -9,8 +9,10 @@
 <link href="{% static 'assets/css/community.css' %}" rel="stylesheet">
 <!-- 广告横幅 -->
 <div class="container-fluid">
-    <div class="row" style='text-align: center; width: 1500px; border: green solid 1px;max-width: 100%; margin-top:100px'>
-        <img class="img-responsive model-img" src="{% static 'assets/images/community-1.png' %}" style="margin: 0 auto;">
+    <div class="row"
+        style='text-align: center; width: 1500px; border: green solid 1px;max-width: 100%; margin-top:100px'>
+        <img class="img-responsive model-img" src="{% static 'assets/images/community-1.png' %}"
+            style="margin: 0 auto;">
     </div>
 </div>
 <!-- 主体内容 -->
@@ -18,7 +20,8 @@
     <div class="row row-3">
         <!-- 侧边导航栏 -->
         <div class="col-md-3">
-            <div class="model-title" style="text-align: center;background-color:#005197;color:#FFF;font-size:28px;margin-top:20px;padding:10px">
+            <div class="model-title"
+                style="text-align: center;background-color:#005197;color:#FFF;font-size:28px;margin-top:20px;padding:10px">
                 社区
             </div>
             <div class="model-list">
@@ -43,7 +46,7 @@
             <div class="model-details-title">
                 {{communityName}}
             </div>
-            <hr/> 
+            <hr />
             <!-- 此处填入社区列表内容 -->
             <div class="model-details">
                 {% for community in communityList %}
@@ -62,7 +65,8 @@
                         <p>{{ community.description|truncatechars:"150"|linebreaks }}</p>
                         <div class="thumbnail row-5">
                             <div class="caption">
-                                <a href="{% url 'communityPart:communityDetail' community.id %}" class="btn btn-primary" role="button">
+                                <a href="{% url 'communityPart:communityDetail' community.id %}" class="btn btn-primary"
+                                    role="button">
                                     查看详情
                                 </a>
                             </div>

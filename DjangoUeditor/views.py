@@ -7,10 +7,9 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 import random
-from django.utils import six
-
-from django.utils.six.moves.urllib.request import urlopen
-from django.utils.six.moves.urllib.parse import urljoin
+import six
+from urllib.request import urlopen
+from urllib.parse import urljoin
 
 
 if six.PY3:
@@ -136,7 +135,7 @@ def get_files(root_path, cur_path, allow_types=[]):
                         USettings.gSettings.MEDIA_URL,
                         os.path.join(
                             os.path.relpath(cur_path, root_path), item
-                            ).replace("\\", "/")),
+                        ).replace("\\", "/")),
                     "mtime": os.path.getmtime(item_fullname)
                 })
 

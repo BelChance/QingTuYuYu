@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'videoPart',
     'communityPart',
     'aboutPart',
-    'DjangoUeditor',   #添加富文本应用
-    'haystack',        #添加搜索应用
+    'DjangoUeditor',  
+    'haystack',  
 ]
 
 MIDDLEWARE = [
@@ -140,9 +140,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 新闻搜索配置django-haystack
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'newsPart.whoosh_backend.WhooshEngine',
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     },
 }
-HAYSTACK_SEARCH_RESULTS_PER_PAGE  =  10
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
