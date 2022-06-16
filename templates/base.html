@@ -21,7 +21,6 @@
 
 
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/news.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/slick/slick-theme.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/iconfont.css' %}">
@@ -121,30 +120,27 @@
 
                     <!-- navbar menu -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
+                        
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{% url 'home' %}">首页</a></li>
-                            <li><a href="{% url 'aboutPart:about' %}">关于我们</a></li>
+                            <li class="dropdown nav-top" id='products'>
+                                <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                                    商城</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'aboutPart:products' 'robot' %}">
+                                            足球装备</a></li>
+                                    <li><a href="{% url 'aboutPart:products' 'monitor' %}">
+                                            周边商品</a></li>
+                                    <!-- <li><a href="{% url 'aboutPart:products' 'face' %}">
+                                            人脸识别解决方案</a></li> -->
+                                </ul>
+                            </li>
 
-                            <li class="dropdown nav-top" id='news'>
-                                <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
-                                    团队动态</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{% url 'newsPart:news' 'com_new' %}">管理团队</a></li>
-                                    <li><a href="{% url 'newsPart:news' 'spe_new' %}">师资团队</a></li>
-                                    <li><a href="{% url 'newsPart:news' 'man_new' %}">课程研发团队</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown nav-top" id='community'>
-                                <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
-                                    社区</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{% url 'communityPart:community' 'knowledge' %}">足球新闻&小知识</a></li>
-                                    <li><a href="{% url 'communityPart:community' 'English' %}">足球英语</a></li>
-                                    <li><a href="{% url 'communityPart:community' 'policy' %}">体育相关政策</a></li>
-                                    <li><a href="{% url 'communityPart:community' 'health' %}">健康知识</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{% url 'videoPart:video' 'video_skill' %}">视频课程</a></li>
+                            
+                            
+                            <li><a href="{% url 'newsPart:news' %}">团队动态</a></li>
+                            <li><a href="{% url 'commuityPart:commuity' %}">社区</a></li>
+                            <li><a href="{% url 'videoPart:video' %}">视频课程</a></li>
                             <li><a href="{% url 'contactPart:contact' %}">联系我们</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->

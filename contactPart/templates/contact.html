@@ -4,3 +4,90 @@
 {% block title %}
 联系我们
 {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/contact.css' %}">
+
+<script src="https://api.map.baidu.com/api?v=2.0&ak=1a3c89ddb9bcfaf5b9dc4b62e3f2a05b"></script>
+<div class="container-fluid">
+    <div class="row">
+        <img class="img-responsive model-img" src="{% static 'assets/images/contact.jpg' %}">
+    </div>
+</div>
+<div class="container">
+    <div class="model-details-title">
+        欢迎咨询
+    </div>
+    <div class="model-details">
+    </div>
+    
+    
+<div class="col-md-4">
+    <div class="contact-right">
+        <h1>
+            <strong>QTYY-MASTER</strong>
+            
+        </h1>
+        <ul>
+            <li><span>业务质询一：</span>111-111111</li>
+            <li><span>业务质询二：</span>222-222222</li>
+            <li><span>咨询电话：</span>0111-1111111</li>
+            <li><span>企业传真：</span>0222-2222222</li>
+            <li><span>地址：</span>北京市海淀区上地街道信息路48号</li>
+            <li><span>邮编：</span>401120</li>
+            <li><span>网址：</span>
+                <a href="http://bsu.edu.cn">http://bsu.edu.cn</a>
+            </li>
+        </ul>
+    </div>
+    <div class="erweima">
+      <div class="er">
+          <img class="img-responsive model-img" 
+    src="{% static 'assets/images/qr.png' %}">
+      </div>
+    </div>
+</div>
+<!-- 百度地图容器 -->
+     <div style="width:650px;height:550px;top:40px;right:0px;border:#ccc solid 1px;font-size:12px" id="map"></div>
+</body> 
+<script type="text/javascript">
+  //创建和初始化地图函数：
+  function initMap(){
+    createMap();//创建地图
+    setMapEvent();//设置地图事件
+    addMapControl();//向地图添加控件
+    addMapOverlay();//向地图添加覆盖物
+  }
+  function createMap(){ 
+    map = new BMap.Map("map"); 
+    map.centerAndZoom(new BMap.Point(116.345848,40.042568),14);
+  }
+  function setMapEvent(){
+    map.enableScrollWheelZoom();
+    map.enableKeyboard();
+    map.enableDragging();
+    map.enableDoubleClickZoom()
+  }
+  function addClickHandler(target,window){
+    target.addEventListener("click",function(){
+      target.openInfoWindow(window);
+    });
+  }
+  function addMapOverlay(){
+  }
+  //向地图添加控件
+  function addMapControl(){
+    var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+    scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+    map.addControl(scaleControl);
+    var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:0});
+    map.addControl(navControl);
+    var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+    map.addControl(overviewControl);
+  }
+  var map;
+    initMap();
+</script> 
+
+
+{% endblock %}
