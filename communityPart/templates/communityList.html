@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+{{communityName}}
+{% endblock %}
+
+{% block content %}
+<link href="{% static 'assets/css/community.css' %}" rel="stylesheet">
+<!-- 广告横幅 -->
+<div class="container-fluid">
+    <div class="row" style='text-align: center; width: 1500px; border: green solid 1px;max-width: 100%; margin-top:100px'>
+        <img class="img-responsive model-img" src="{% static 'assets/images/community-1.png' %}" style="margin: 0 auto;">
+    </div>
+</div>
+<!-- 主体内容 -->
+<div class="container">
+    <div class="row row-3">
+        <!-- 侧边导航栏 -->
+        <div class="col-md-3">
+            <div class="model-title" style="text-align: center;background-color:#005197;color:#FFF;font-size:28px;margin-top:20px;padding:10px">
+                社区
+            </div>
+            <div class="model-list">
+                <ul class="list-group">
+                    <li class="list-group-item" id="knowlegde">
+                        <a href="{% url 'communityPart:community' 'knowlegde' %}">足球新闻&小知识</a>
+                    </li>
+                    <li class="list-group-item" id="English">
+                        <a href="{% url 'communityPart:community' 'English' %}">足球英语</a>
+                    </li>
+                    <li class="list-group-item" id="policy">
+                        <a href="{% url 'communityPart:community' 'policy' %}">体育相关政策</a>
+                    </li>
+                    <li class="list-group-item" id="health">
+                        <a href="{% url 'communityPart:community' 'health' %}">健康知识</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 说明文字和图片 -->
+        <div class="col-md-9">
+            <div class="model-details-title">
+                {{communityName}}
+            </div>
+            <hr/> 
+            <!-- 此处填入社区列表内容 -->
+            <div class="model-details">
+                {% for community in communityList %}
+                <div class="row">
+                    <div class="col-md-6">
+                        {% for img in community.communityImgs.all %}
+                        {% if forloop.first %}
+                        <a href="{% url 'communityPart:communityDetail' community.id %}" class="thumbnail row-4">
+                            <img class="img-responsive model-img" src="{{img.photo.url}}">
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-6">
+                        <h3>{{ community.title|truncatechars:"20" }}</h3>
+                        <p>{{ community.description|truncatechars:"150"|linebreaks }}</p>
+                        <div class="thumbnail row-5">
+                            <div class="caption">
+                                <a href="{% url 'communityPart:communityDetail' community.id %}" class="btn btn-primary" role="button">
+                                    查看详情
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if pageData %}
+                <div class="paging">
+                    <ul id="pages" class="pagination pagination-sm pagination-xs">
+                        {% if pageData.first %}
+                        <li><a href="?page=1">1</a></li>
+                        {% endif %}
+                        {% if pageData.left %}
+                        {% if pageData.left_has_more %}
+                        <li><span>...</span></li>
+                        {% endif %}
+                        {% for i in pageData.left %}
+                        <li><a href="?page={{i}}">{{i}}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                        <li class="active"><a href="?page={{pageData.page}}">{{pageData.page}}</a></li>
+                        {% if pageData.right %}
+                        {% for i in pageData.right %}
+                        <li><a href="?page={{i}}">{{i}}</a></li>
+                        {% endfor %}
+                        {% if pageData.right_has_more %}
+                        <li><span>...</span></li>
+                        {% endif %}
+                        {% endif %}
+                        {% if pageData.last %}
+                        <li><a href="?page={{pageData.total_pages}}">{{pageData.total_pages}}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
